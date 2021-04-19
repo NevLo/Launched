@@ -467,7 +467,7 @@ MonoBehaviour:
   boostText: {fileID: 799357878}
   healthLabel: {fileID: 33421597}
   healthText: {fileID: 55205993}
-  player: {fileID: 1060988748}
+  player: {fileID: 1060988750}
 --- !u!1001 &385688130
 PrefabInstance:
   m_ObjectHideFlags: 0
