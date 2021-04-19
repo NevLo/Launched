@@ -23,7 +23,7 @@ public class UIMgr : MonoBehaviour
     public Text boostText;
     public Text healthLabel;
     public Text healthText;
-    public GameObject player;
+    public PhysicsAndInput player;
    
 
     //PhysicsAndInput test = playerObject.GetComponent<PhysicsAndInput>();
@@ -32,7 +32,9 @@ public class UIMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //speedText.text = (player.GetComponent<PhysicsAndInput>).ToString(); 
+        
+        
+        speedText.text = (player.vel.magnitude).ToString(); 
         //boostText.text = ().ToString(); 
         //healthText.text = ().ToString(); 
     }
