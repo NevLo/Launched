@@ -46,6 +46,9 @@ public class PhysicsAndInput : MonoBehaviour
 
     void getInputs()
     {
+        if (Input.GetKey(KeyCode.Q))
+            Application.Quit();
+
         if (Input.GetKey(KeyCode.LeftArrow))
             pos.x -= deltaPos;
         if (Input.GetKey(KeyCode.RightArrow))

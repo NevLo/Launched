@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264786648}
+  - component: {fileID: 264786649}
   m_Layer: 5
   m_Name: CreditsMenu
   m_TagString: Untagged
@@ -161,6 +162,20 @@ RectTransform:
   m_AnchoredPosition: {x: -10.8606, y: -15.8565}
   m_SizeDelta: {x: 466.5193, y: 336.2045}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &264786649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264786647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fdcdfb737f09444824ed9110fba83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 903651746}
+  creditMenu: {fileID: 264786647}
 --- !u!1 &325234230
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +428,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 429180490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903651748}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &429180490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +797,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 658592468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903651748}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: Credits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &658592468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 169}
+  m_AnchoredPosition: {x: 18, y: 187}
   m_SizeDelta: {x: 575.7041, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736348090
@@ -1226,6 +1265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fdcdfb737f09444824ed9110fba83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 903651746}
+  creditMenu: {fileID: 264786647}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,8 +1423,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1728,13 +1769,13 @@ GameObject:
   - component: {fileID: 1320663064}
   - component: {fileID: 1320663066}
   - component: {fileID: 1320663065}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320663064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1744,15 +1785,15 @@ RectTransform:
   m_GameObject: {fileID: 1320663063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 274.38}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 562449265}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72, y: -110}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -70.0603, y: 14.4606}
+  m_SizeDelta: {x: 277.2975, y: 189.947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1320663065
 MonoBehaviour:

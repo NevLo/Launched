@@ -24,8 +24,9 @@ public class UIMgr : MonoBehaviour
     public Text healthLabel;
     public Text healthText;
     public GameObject player;
+   
 
-    //ScriptableObject test = player.GetComponent<PhysicsAndInput>();
+    //PhysicsAndInput test = playerObject.GetComponent<PhysicsAndInput>();
 
     //GameObject player = Player;
     // Update is called once per frame
