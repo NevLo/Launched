@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoinMGR : MonoBehaviour
 {
+    public int score = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class CoinMGR : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Collect() {
+        score += 100;
+
     }
 }

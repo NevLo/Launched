@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PhysicsAndInput : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public AudioSource audioSource;
 
 
     public Vector3 pos;
@@ -61,6 +62,7 @@ public class PhysicsAndInput : MonoBehaviour
         {
             vel.y = jumpSpeed;
             accl.y = gravity;
+             audioSource.Play();
         }
     }
 
