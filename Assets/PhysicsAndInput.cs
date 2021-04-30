@@ -7,22 +7,26 @@ public class PhysicsAndInput : MonoBehaviour
 {
     // Start is called before the first frame update
     public AudioSource audioSource;
-
+ 
 
     public Vector3 pos;
     public Vector3 vel;
     public Vector3 accl;
     public float deltaPos = .05F;
     public float jumpSpeed = 1F;
-    public float height = 2;
+    
     public float gravity = -.98F;
+    private bool hasJumped;
+    public float turnSpeed = 5f;
+    
     void Start()
     {
         pos = Vector3.zero;
         vel = Vector3.zero;
         accl = Vector3.zero;
         accl.y = 0;
-        pos.y = height;
+        pos.y = -1;
+        hasJumped = false;
     }
 
 
@@ -35,9 +39,13 @@ public class PhysicsAndInput : MonoBehaviour
 
         vel = vel + accl * Time.deltaTime;
         pos = pos + vel * Time.deltaTime;
-        if (pos.y <= height)
+        if (accl.y == 0)
         {
-            pos.y = height;
+            hasJumped = false;
+        }
+        if (pos.y <= -1)
+        {
+            pos.y = -1;
             accl.y = 0;
         }        
 
@@ -49,20 +57,20 @@ public class PhysicsAndInput : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
             Application.Quit();
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-            pos.x -= deltaPos;
-        if (Input.GetKey(KeyCode.RightArrow))
-            pos.x += deltaPos;
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey("d"))
             pos.z += deltaPos;
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey("a"))
             pos.z -= deltaPos;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey("s"))
+            pos.x += deltaPos;
+        if (Input.GetKey("w"))
+            pos.x -= deltaPos;
+        if (Input.GetKey(KeyCode.Space) && !hasJumped)
         {
             vel.y = jumpSpeed;
             accl.y = gravity;
-             audioSource.Play();
+            audioSource.Play();
+            hasJumped = true;
         }
     }
 
