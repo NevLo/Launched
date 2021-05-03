@@ -23,7 +23,7 @@ public class Boosts : MonoBehaviour
     }
 
     void onCollisionEnter(Collision collision) {
-        player.vel.x = -5;
+        player.vel.x += 5;
         Debug.Log("BOOSTS");
         Debug.Log("Player collided with" + collision.collider.gameObject.name);
     }

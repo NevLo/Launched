@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class PhysicsAndInput : MonoBehaviour
@@ -55,6 +56,8 @@ public class PhysicsAndInput : MonoBehaviour
 
     void getInputs()
     {
+        if (Input.GetKey(KeyCode.D))
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (Input.GetKey(KeyCode.Q))
             Application.Quit();
         if (Input.GetKey("d"))
