@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(AudioSource),typeof(Component))]
 public class EnemyPhysics : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,11 +18,13 @@ public class EnemyPhysics : MonoBehaviour
     public float gravity = -.98F;
     void Start()
     {
-        //pos = Vector3.zero;
+        pos = new Vector3(0,0,0);
+        transform.localPosition = pos;
         //vel = Vector3.zero;
         //accl = Vector3.zero;
         //accl.y = 0;
         //pos.y = height;
+
     }
 
 
@@ -31,46 +33,26 @@ public class EnemyPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Floor(pos.z) == 2) {
-            vel.z = 1;
-        }
-        if (Mathf.Floor(pos.z) == 5.57) {
-            vel.z = -1;
-        }
-        
-        getInputs();
 
+
+        float dist = getDistFromPlayer();
+        
+
+        if (dist >= 300)
+        {
+            var playerpos = GameObject.Find("PlayerObject").transform.position;
+            pos = Vector3.MoveTowards(transform.position, playerpos, -deltaPos);
+            Debug.Log(dist);
+        }
         vel = vel + accl * Time.deltaTime;
         pos = pos + vel * Time.deltaTime;
-        if (pos.y <= height)
-        {
-            pos.y = height;
-            accl.y = 0;
-        }
-
         transform.localPosition = pos;
-
     }
 
-    void getInputs()
+    float getDistFromPlayer()
     {
-        if (Input.GetKey(KeyCode.Q))
-            Application.Quit();
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-            //pos.x -= deltaPos;
-        if (Input.GetKey(KeyCode.RightArrow))
-            //pos.x += deltaPos;
-        if (Input.GetKey(KeyCode.UpArrow))
-            //pos.z += deltaPos;
-        if (Input.GetKey(KeyCode.DownArrow))
-            //pos.z -= deltaPos;
-        if (Input.GetKey(KeyCode.Space))
-        {
-            //vel.y = jumpSpeed;
-            //accl.y = gravity;
-            //audioSource.Play();
-        }
+        var playerpos = GameObject.Find("PlayerObject").transform.position;
+        return (playerpos - pos).magnitude;
     }
 
 }
