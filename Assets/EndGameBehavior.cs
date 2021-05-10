@@ -7,6 +7,7 @@ public class EndGameBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public string next; 
     GameObject player;
     void Start()
     {
@@ -19,7 +20,7 @@ public class EndGameBehavior : MonoBehaviour
         Debug.Log((player.transform.position - transform.position).magnitude);
         if ((player.transform.position - transform.position).magnitude < 5)
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene(next);
         }
     }
 
