@@ -18,6 +18,7 @@ public class PhysicsAndInput : MonoBehaviour
     
     public float gravity = -.98F;
     private bool hasJumped;
+    private bool useGravity = true;
     public float turnSpeed = 5f;
     
     void Start()
@@ -26,7 +27,7 @@ public class PhysicsAndInput : MonoBehaviour
         vel = Vector3.zero;
         accl = Vector3.zero;
         accl.y = 0;
-        pos.y = -1;
+        pos.y = 0;
         hasJumped = false;
     }
 
@@ -44,9 +45,9 @@ public class PhysicsAndInput : MonoBehaviour
         {
             hasJumped = false;
         }
-        if (pos.y <= -1)
+        if (pos.y <= 0 && useGravity)
         {
-            pos.y = -1;
+            pos.y = 0;
             accl.y = 0;
         }        
 
@@ -76,7 +77,6 @@ public class PhysicsAndInput : MonoBehaviour
             hasJumped = true;
         }
     }
-
 }
 
 
