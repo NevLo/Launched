@@ -80,6 +80,10 @@ public class PhysicsAndInput : MonoBehaviour
                     {
                         frameSinceLastInvulnerable = 0;
                         health -= 10;
+                        if (health == 0)
+                        {
+                            SceneManager.LoadScene("Minigame");
+                        }
                         //score -= 10;
                     }
                 }
