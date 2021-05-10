@@ -20,7 +20,15 @@ public class PhysicsAndInput : MonoBehaviour
     private bool hasJumped;
     private bool useGravity = true;
     public float turnSpeed = 5f;
-    
+    private int invulnerabilityFrames = 30;
+    private int health = 100;
+    private int score = 0;
+    private GameObject cow;
+    private int frameSinceLastInvulnerable;
+
+    private bool cowDead = false;
+
+
     void Start()
     {
         pos = Vector3.zero;
@@ -29,6 +37,8 @@ public class PhysicsAndInput : MonoBehaviour
         accl.y = 0;
         pos.y = 0;
         hasJumped = false;
+
+        cow = GameObject.Find("prefab_prop_animal_cow");
     }
 
 
@@ -37,6 +47,7 @@ public class PhysicsAndInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         getInputs();
 
         vel = vel + accl * Time.deltaTime;
@@ -49,10 +60,41 @@ public class PhysicsAndInput : MonoBehaviour
         {
             pos.y = 0;
             accl.y = 0;
-        }        
-
+        }
+        if (!cowDead)
+        {
+            var dist = getDistFromCow();
+            //Debug.Log(dist);
+            
+            if (dist < 6.5)
+            {
+                if (pos.y > cow.transform.position.y)
+                {
+                    Destroy(cow);
+                    score += 100;
+                    cowDead = true;
+                }
+                else
+                {
+                    if (frameSinceLastInvulnerable > invulnerabilityFrames)
+                    {
+                        frameSinceLastInvulnerable = 0;
+                        health -= 10;
+                        //score -= 10;
+                    }
+                }
+            }
+            Debug.Log("Health: " + health + "\tScore: " + score);
+        }
         transform.localPosition = pos;
+        frameSinceLastInvulnerable++;
+    }
 
+
+    float getDistFromCow()
+    {
+        var cowpos = cow.transform.position;
+        return (cowpos - pos).magnitude;
     }
 
     void getInputs()

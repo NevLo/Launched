@@ -44,7 +44,7 @@ public class EnemyPhysics : MonoBehaviour
         {
             var playerpos = player.transform.position;
             pos = Vector3.MoveTowards(transform.position, playerpos, deltaPos);
-            
+            //Debug.Log(dist);
             
 
             //vel = vel + accl * Time.deltaTime;
